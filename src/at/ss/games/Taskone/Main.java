@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Main extends BasicGame {
+
     private enum DIRECTION {RIGHT, DOWN, LEFT, UP}
 
     private List<Actor> actors;
@@ -22,12 +23,12 @@ public class Main extends BasicGame {
         this.actors = new ArrayList<>();
         Random objekt = new Random();
         for (int i = 0; i < 10; i++) {
-            Rectangles rectangle = new Rectangles(objekt.nextInt(600), objekt.nextInt(600), objekt.nextInt(50));
+            Rectangles rectangle = new Rectangles(objekt.nextInt(600), objekt.nextInt(600), objekt.nextInt(50), objekt.nextInt(2));
+            Cyrcle cyrcle = new Cyrcle(objekt.nextInt(600), objekt.nextInt(400), objekt.nextInt(600));
+            Elypse elypse = new Elypse(objekt.nextInt(500), objekt.nextInt(500), objekt.nextInt(50));
             actors.add(rectangle);
-        }
-        for (int i = 0; i < 5; i++) {
-            Elypse elypse = new Elypse(objekt.nextInt(500),objekt.nextInt(600));
-            this.actors.add(elypse);
+            actors.add(cyrcle);
+            actors.add(elypse);
         }
     }
 
@@ -41,8 +42,8 @@ public class Main extends BasicGame {
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
-        for (Actor actor:this.actors
-             ) {
+        for (Actor actor : this.actors
+        ) {
             actor.render(graphics);
         }
     }
